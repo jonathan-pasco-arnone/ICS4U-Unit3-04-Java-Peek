@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
 * This is the main outer function.
 */
-final class UserError {
+final class Peek {
     /**
     * Prevent instantiation
     * Throw an exception IllegalStateException.
@@ -21,7 +21,7 @@ final class UserError {
     * @throws IllegalStateException
     *
     */
-    private UserError() {
+    private Peek() {
         // Prevent instantiation
         // Optional: throw an exception e.g. AssertionError
         // if this ever *is* called
@@ -38,6 +38,7 @@ final class UserError {
         final MrCoxallStack aStack = new MrCoxallStack();
         final String addedNewNumber = "Added ";
         final String popNumber = "Popped ";
+        final String peekNumber = "The top value of the stack is ";
         final String newStack = "\nNew Stack: ";
         final String failedPush = "Cannot add to stack, it is not an integer";
         // Create scanner objects for inputs.
@@ -47,9 +48,6 @@ final class UserError {
         final int firstNumber;
         final int secondNumber;
         final int thirdNumber;
-
-        System.out.println("Initial stack: ");
-        aStack.showStack();
 
         /*
         * Push
@@ -98,6 +96,17 @@ final class UserError {
             aStack.showStack();
         } catch (java.util.InputMismatchException ex) {
             System.out.println(failedPush);
+        }
+
+        /*
+        * Peek
+        */
+        System.out.println("\n----- Peek -------\n");
+
+        // Removing the top number
+        final int peekedNumber = aStack.peek();
+        if (peekedNumber != -1) {
+            System.out.println(peekNumber + peekedNumber);
         }
 
         /*
